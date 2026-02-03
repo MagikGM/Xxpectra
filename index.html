@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xxpectra Studio | Fotografía y Video Profesional</title>
+    <link rel="icon" type="imagen/png" href="imagenes/xp-icon.png">
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts: Cargando DM Serif Text y Merriweather Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=drone_2">
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="header-content">
+            <!-- Icono Hamburguesa (Izquierda) -->
+            <button class="hamburger" id="menuToggle">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            
+            <!-- Logotipo Centrado -->
+            <div class="logo-container">
+                <a href="#" onclick="showPage('home')">
+                    <img src="imagenes/logo-xxpectra.png" alt="Xxpectra Studio" class="logo-img">
+                </a>
+            </div>
+            
+            <!-- Espacio vacío derecha para equilibrio -->
+            <div style="width: 24px;"></div> 
+        </div>
+    </header>
+
+    <!-- SIDEBAR NAVIGATION -->
+    <div class="sidebar-overlay" id="overlay"></div>
+    <nav class="sidebar" id="sidebar">
+        <div>
+            <div class="close-btn" id="closeMenu"><i class="fa-solid fa-times"></i></div>
+            <ul class="nav-links">
+                <li><a href="#" onclick="showPage('home')" class="nav-link active">Inicio</a></li>
+                <li><a href="#" onclick="showPage('services')" class="nav-link">Servicios</a></li>
+                <li><a href="#" onclick="showPage('portfolio')" class="nav-link">Portafolio</a></li>
+                <li><a href="#" onclick="showPage('contact')" class="nav-link">Contacto</a></li>
+            </ul>
+        </div>
+        
+        <div class="sidebar-footer">
+            <div class="sidebar-socials">
+                <a href="https://www.facebook.com/Xxpectra.Studio" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/xxpectra_studio/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://wa.me/5523145831" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i></a>
+                <a href="https://www.tiktok.com/@xxpectrastudio" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-tiktok"></i></a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT AREA -->
+    <main>
+
+        <!-- PAGINA: INICIO (index.html) -->
+        <div id="home" class="page-view active">
+            <section class="hero">
+                <div class="hero-bg-animate"></div>
+                
+                <!-- 2. Capa Oscura (Overlay) -->
+                <div class="hero-overlay"></div>
+                
+                <!-- 3. Contenido de Texto -->
+                <div class="container">
+                    <h1>Capturamos la Esencia</h1>
+                    <h2>VIDEO Y FOTOGRAFÍA PROFESIONAL</h2>
+                    <button class="btn" onclick="showPage('portfolio')">Ver Trabajos</button>
+                </div>
+            </section>
+
+            <!-- Quiénes Somos -->
+            <section class="section bg-secondary fade-in">
+                <div class="container">
+                    <div class="text-center fade-in" style="margin-bottom: 60px;">
+                        <p class="text-accent fade-in" style="margin-bottom: 10px;">XXPECTRA STUDIO</p>
+                        <h2 class="fade-in" style="font-size: 3rem; margin-bottom: 15px;">Quiénes Somos</h2>
+                        <div class="fade-in" style="width: 100px; height: 2px; background: var(--accent); margin: 0 auto;"></div>
+                    </div>
+
+                    <div class="about-grid fade-in">
+                        <div class="fade-in">
+                            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Equipo Xxpectra" style="border-radius: 4px;">
+                        </div>
+                        <div class="fade-in">
+                            <h3 style="font-size: 2rem; margin-bottom: 20px;">Nuestra Historia</h3>
+                            <p style="margin-bottom: 30px; color: var(--text-light);">
+                                Fundada en 2018, Xxpectra Studio nació de la pasión por la estética visual y la narrativa cinematográfica. Nos hemos consolidado como una referencia en la creación de contenido minimalista y potente.
+                            </p>
+
+                            <h4 style="margin-bottom: 20px; font-family: var(--font-titles);">Experiencia & Trayectoria</h4>
+                            <div class="curriculum-item fade-in">
+                                <h4>Más de 150 Proyectos</h4>
+                                <span>2020 - Presente</span>
+                                <p>Cobertura integral para marcas nacionales e internacionales.</p>
+                            </div>
+                            <div class="curriculum-item fade-in">
+                                <h4>Certificación en Cine Digital</h4>
+                                <span>2019</span>
+                                <p>Especialización en colorización y narrativa visual.</p>
+                            </div>
+                            <div class="curriculum-item fade-in">
+                                <h4>Premio "Lente de Oro"</h4>
+                                <span>2022</span>
+                                <p>Reconocimiento a mejor fotografía publicitaria regional.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+
+
+        <!-- PAGINA: SERVICIOS (servicios.html) -->
+        <div id="services" class="page-view">
+            <section class="section section-reduced fade-in">
+                <div class="container">
+                    <div class="text-center fade-in" style="margin-bottom: 30px;">
+                        <h2 class="fade-in" style="font-size: 3.5rem; margin-bottom: 15px;">Servicios</h2>
+                        <p class="fade-in" style="color: var(--accent); font-size: 1.2rem; font-weight: 600; text-transform: uppercase; letter-spacing: 3px;">Foto & Video</p>
+                    </div>
+
+                    <div class="services-grid fade-in">
+                        <div class="service-card">
+                            <div class="service-icon"><i class="fa-solid fa-glass-cheers"></i></div>
+                            <h3>Eventos Sociales</h3>
+                            <p>Cobertura cinematográfica de momentos únicos: bodas, XV años y celebraciones especiales.</p>
+                            <button class="service-btn" onclick="openModal('sociales')">Mas detalles</button>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-icon"><i class="fa-solid fa-building"></i></div>
+                            <h3>Corporativo</h3>
+                            <p>Imagen profesional para tu empresa, desde retratos ejecutivos hasta eventos y convenciones.</p>
+                            <button class="service-btn" onclick="openModal('corporativo')">Mas detalles</button>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-icon"><i class="fa-solid fa-bullhorn"></i></div>
+                            <h3>Marketing</h3>
+                            <p>Creación de contenido estratégico diseñado para potenciar tu marca y conectar con tu audiencia.</p>
+                            <button class="service-btn" onclick="openModal('marketing')">Mas detalles</button>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <span class="material-symbols-outlined">drone_2</span>
+                            </div>
+                            <h3>Video con Drone</h3>
+                            <p>Tomas aéreas espectaculares que aportan una perspectiva cinematográfica y épica a tu proyecto.</p>
+                            <button class="service-btn" onclick="openModal('drone')">Mas detalles</button>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-icon"><i class="fa-solid fa-masks-theater"></i></div>
+                            <h3>Cultural y Deportivo</h3>
+                            <p>Documentación especializada de eventos artísticos, festivales y competencias de alto rendimiento.</p>
+                            <button class="service-btn" onclick="openModal('cultural')">Mas detalles</button>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                            <h3>Edición de Foto y Video</h3>
+                            <p>Post-producción profesional, retoque avanzado y colorización para un acabado impecable.</p>
+                            <button class="service-btn" onclick="openModal('edicion')">Mas detalles</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- SERVICE MODAL CONTAINER (DINÁMICO) -->
+        <div class="modal-backdrop" id="serviceModal" onclick="closeModal(event)">
+            <div class="modal-content">
+                <button class="modal-close-btn" onclick="closeModalBtn()"><i class="fa-solid fa-times"></i></button>
+                <div class="modal-body-grid">
+                    <!-- COLUMNA IZQUIERDA: Info + Lista + CTA -->
+                    <div class="modal-left">
+                        <div>
+                            <h3 class="modal-title" id="m-title">Título del Servicio</h3>
+                            <p class="modal-desc" id="m-desc">Descripción detallada del servicio.</p>
+                        </div>
+                        <!-- CAJA CON FONDO GRIS Y LINEA LATERAL -->
+                        <div class="deliverables-box">
+                            <span class="deliverables-title">¿Qué Incluye?</span>
+                            <ul class="deliverables-list" id="m-list">
+                                <!-- Lista generada dinámicamente -->
+                            </ul>
+                        </div>
+                        <!-- CTA BOTÓN WHATSAPP -->
+                        <a href="https://wa.me/5523145831" target="_blank" class="modal-cta-btn">
+                            <i class="fa-brands fa-whatsapp"></i> Cotiza tu paquete aquí
+                        </a>
+                    </div>
+                    <!-- COLUMNA DERECHA: Imagen + Video -->
+                    <div class="modal-right">
+                        <div class="media-wrapper">
+                            <img src="" alt="Entregable" class="deliverables-img" id="m-img">
+                        </div>
+                        <div class="modal-video-container">
+                            <video class="modal-video" id="m-video" autoplay loop muted playsinline>
+                                <source src="" type="video/mp4">
+                            </video>
+                            <div class="video-label">Resultado Final</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PAGINA: PORTAFOLIO (portafolio.html) -->
+        <div id="portfolio" class="page-view">
+            <section class="section section-reduced fade-in">
+                <div class="container">
+                    <div class="text-center fade-in" style="margin-bottom: 50px;">
+                        <h2 class="fade-in" style="font-size: 3rem; margin-bottom: 15px;">Portafolio</h2>
+                        <p class="fade-in" style="color: var(--text-light); font-size: 1.1rem;">Una selección de nuestro mejor trabajo.</p>
+                    </div>
+
+                    <div class="portfolio-grid fade-in">
+                        <!-- Placeholder images used -->
+                        <div class="portfolio-item fade-in">
+                            <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Campaña Moda">
+                            <div class="portfolio-overlay">
+                                <h3>CAMPAÑA ETERNAL</h3>
+                                <p>FOTOGRAFÍA EDITORIAL</p>
+                            </div>
+                        </div>
+                        <div class="portfolio-item fade-in">
+                            <img src="https://images.unsplash.com/photo-1536240478700-b869070f9279?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Video Drone">
+                            <div class="portfolio-overlay">
+                                <h3>HORIZONTES</h3>
+                                <p>VIDEO DRONE</p>
+                            </div>
+                        </div>
+                        <div class="portfolio-item fade-in">
+                            <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Boda Minimalista">
+                            <div class="portfolio-overlay">
+                                <h3>BODA LUCÍA & MARC</h3>
+                                <p>EVENTO SOCIAL</p>
+                            </div>
+                        </div>
+                        <div class="portfolio-item fade-in">
+                            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Video Corporativo">
+                            <div class="portfolio-overlay">
+                                <h3>TORRE ONYX</h3>
+                                <p>VIDEO CORPORATIVO</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonios -->
+                <div class="section testimonials fade-in">
+                    <div class="container">
+                        <div class="testimonial-card fade-in">
+                            <i class="fa-solid fa-quote-left quote-icon"></i>
+                            <p class="testimonial-text">"Xxpectra capturó exactamente la elegancia que queríamos para nuestra marca. Su atención al detalle y su estética minimalista son incomparables."</p>
+                            <p class="client-name">— Sofia R., Directora Creativa de LUNA</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- PAGINA: CONTACTO (contacto.html) -->
+        <div id="contact" class="page-view">
+            <section class="section section-reduced fade-in">
+                <div class="container">
+                    <div class="text-center fade-in" style="margin-bottom: 60px;">
+                        <h2 class="fade-in" style="font-size: 3rem; margin-bottom: 15px;">Contacto</h2>
+                        <p class="fade-in" style="color: var(--text-light); font-size: 1.1rem;">Comencemos tu próximo proyecto.</p>
+                    </div>
+
+                    <div class="contact-wrapper fade-in">
+                        <!-- Info -->
+                        <div class="contact-info fade-in">
+                            <h3 class="fade-in">Información Directa</h3>
+                            <p class="fade-in" style="margin-bottom: 30px; color: var(--text-light);">Estamos disponibles para discutir tu proyecto vía telefónica o WhatsApp.</p>
+
+                            <div class="info-item fade-in">
+                                <i class="fa-brands fa-whatsapp"></i>
+                                <div>
+                                    <h4 class="fade-in" style="font-size: 0.9rem; text-transform: uppercase; font-weight: 700;">Teléfono / WhatsApp</h4>
+                                    <p class="fade-in">+52 55 2314 5831</p>
+                                </div>
+                            </div>
+                            <div class="info-item fade-in">
+                                <i class="fa-regular fa-envelope"></i>
+                                <div>
+                                    <h4 class="fade-in" style="font-size: 0.9rem; text-transform: uppercase; font-weight: 700;">Email</h4>
+                                    <p class="fade-in">contacto@xxpectrastudio.com</p>
+                                </div>
+                            </div>
+                            <div class="info-item fade-in">
+                                <i class="fa-solid fa-location-dot"></i>
+                                <div>
+                                    <h4 class="fade-in" style="font-size: 0.9rem; text-transform: uppercase; font-weight: 700;">Estudio</h4>
+                                    <p class="fade-in">Av. Reforma 222, CDMX</p>
+                                </div>
+                            </div>
+
+                            <div class="map-placeholder fade-in">
+                                <p>MAPA DE UBICACIÓN (Google Maps)</p>
+                            </div>
+                        </div>
+
+                        <!-- Formulario -->
+                        <div class="contact-form fade-in">
+                            <h3 class="fade-in" style="margin-bottom: 20px;">Envíanos un mensaje</h3>
+                            <form onsubmit="event.preventDefault(); alert('Gracias por tu mensaje. Nos pondremos en contacto pronto.');">
+                                <div class="form-group fade-in">
+                                    <input type="text" placeholder="Nombre Completo" required>
+                                </div>
+                                <div class="form-group fade-in">
+                                    <input type="email" placeholder="Correo Electrónico" required>
+                                </div>
+                                <div class="form-group fade-in">
+                                    <input type="tel" placeholder="Teléfono" required>
+                                </div>
+                                <div class="form-group fade-in">
+                                    <select required style="color: #666;">
+                                        <option value="" disabled selected>Tipo de Servicio</option>
+                                        <option value="video">Video Filmación</option>
+                                        <option value="foto">Fotografía</option>
+                                        <option value="drone">Video con Drone</option>
+                                        <option value="social">Redes Sociales</option>
+                                    </select>
+                                </div>
+                                <div class="form-group fade-in">
+                                    <textarea rows="5" placeholder="Cuéntanos sobre tu proyecto..." required></textarea>
+                                </div>
+                                <button type="submit" class="btn fade-in" style="width: 100%;">Enviar Mensaje</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- PAGINA: TÉRMINOS Y CONDICIONES -->
+        <div id="terms" class="page-view">
+            <section class="section section-reduced">
+                <div class="container">
+                    <div class="text-center" style="margin-bottom: 30px;">
+                        <h2 style="font-size: 3rem; margin-bottom: 10px;">TÉRMINOS Y CONDICIONES</h2>
+                        <p style="color: var(--text-light); font-size: .8rem;">Última actualización: Enero 2026</p>
+                    </div>
+
+                    <div style="max-width: 800px; margin: 0 auto; text-align: left;">
+                        <p style="margin-bottom: 30px; color: var(--text-light); line-height: 1.6;">
+                            Al acceder y utilizar este sitio web, aceptas los siguientes Términos y Condiciones. Si no estás de acuerdo con ellos, se recomienda no utilizar el sitio.
+                        </p>
+
+                        <h3 style="margin-bottom: 20px;">Uso del sitio web</h3>
+                        <p style="margin-bottom: 30px; color: var(--text-light); line-height: 1.6;">
+                            Este sitio tiene como finalidad mostrar el portafolio, servicios y medios de contacto de Xxpectra Studio. El uso del contenido debe ser únicamente informativo.
+                        </p>
+
+                        <h3 style="margin-bottom: 20px;">Servicios y contratación</h3>
+                        <p style="margin-bottom: 30px; color: var(--text-light); line-height: 1.6;">
+                            Los precios, paquetes y servicios mostrados en el sitio web son informativos y pueden cambiar sin previo aviso.
+                        </p>
+
+                        <p style="margin-bottom: 30px; color: var(--text-light); line-height: 1.6;">
+                            La contratación de servicios se realiza exclusivamente a través de contacto directo (WhatsApp, correo o teléfono), por lo que este sitio no procesa pagos ni contratos en línea.
+                        </p>
+
+                        <h3 style="margin-bottom: 20px;">Propiedad intelectual</h3>
+                        <p style="margin-bottom: 30px; color: var(--text-light); line-height: 1.6;">
+                            Todo el contenido presente en este sitio web, incluyendo fotografías, videos, textos, logotipos y material audiovisual, es propiedad de Xxpectra Studio o se utiliza con autorización de sus respectivos clientes.
+                        </p>
+
+                        <p style="margin-bottom: 30px; color: var(--text-light); line-height: 1.6;">
+                            Queda prohibida la reproducción, distribución, modificación o uso del contenido sin autorización previa y por escrito de Xxpectra Studio.
+                        </p>
+
+                        <h3 style="margin-bottom: 20px;">Uso del contenido por terceros</h3>
+                        <p style="margin-bottom: 30px; color: var(--text-light); line-height: 1.6;">
+                            El material mostrado en este sitio no puede ser descargado, reutilizado o empleado con fines comerciales sin consentimiento expreso de la agencia.
+                        </p>
+
+                        <h3 style="margin-bottom: 20px;">Responsabilidad</h3>
+                        <p style="margin-bottom: 30px; color: var(--text-light); line-height: 1.6;">
+                            Xxpectra Studio no se hace responsable por:
+                        </p>
+
+                        <ul style="margin-bottom: 30px; color: var(--text-light); line-height: 1.6;">
+                            <li>El mal uso del contenido del sitio</li>
+                            <li>Interrupciones temporales del sitio web</li>
+                            <li>Daños derivados del acceso o uso de la información presentada</li>
+                        </ul>
+
+                        <h3 style="margin-bottom: 20px;">Enlaces externos</h3>
+                        <p style="margin-bottom: 30px; color: var(--text-light); line-height: 1.6;">
+                            Este sitio puede incluir enlaces o accesos directos a plataformas externas como WhatsApp. Xxpectra Studio no es responsable de las políticas o prácticas de privacidad de dichos servicios.
+                        </p>
+
+                        <h3 style="margin-bottom: 20px;">Modificaciones</h3>
+                        <p style="margin-bottom: 30px; color: var(--text-light); line-height: 1.6;">
+                            Estos Términos y Condiciones pueden modificarse en cualquier momento sin previo aviso. Las actualizaciones estarán disponibles en esta misma sección.
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- PAGINA: POLÍTICA DE PRIVACIDAD -->
+        <div id="privacy" class="page-view">
+            <section class="section section-reduced">
+                <div class="container">
+                    <div class="text-center" style="margin-bottom: 30px;">
+                        <h2 style="font-size: 3rem; margin-bottom: 10px;">POLÍTICA DE PRIVACIDAD</h2>
+                        <p style="color: var(--text-light); font-size: .8rem;">Tu privacidad es importante para nosotros.</p>
+                    </div>
+
+                    <div style="max-width: 800px; margin: 0 auto; text-align: left;">
+                        <p style="margin-bottom: 30px; color: var(--text-light); line-height: 1.6;">
+                            En Xxpectra Studio, con domicilio en México, respetamos la privacidad de las personas que visitan nuestro sitio web y se comunican con nosotros.
+                        </p>
+
+                        <p style="margin-bottom: 30px; color: var(--text-light); line-height: 1.6;">
+                            Este Aviso de Privacidad tiene como finalidad informarte cómo se maneja tu información cuando te pones en contacto con nuestra agencia.
+                        </p>
+
+                        <h3 style="margin-bottom: 20px;">Datos personales</h3>
+                        <p style="margin-bottom: 30px; color: var(--text-light); line-height: 1.6;">
+                            Nuestro sitio web no recopila datos personales de forma automática, ya que no contamos con formularios de registro ni formularios de contacto.
+                        </p>
+
+                        <p style="margin-bottom: 30px; color: var(--text-light); line-height: 1.6;">
+                            Los únicos datos que podríamos recibir son aquellos que el usuario decide compartir voluntariamente a través de medios externos como:
+                        </p>
+
+                        <ul style="margin-bottom: 30px; color: var(--text-light); line-height: 1.6;">
+                            <li>WhatsApp</li>
+                            <li>Correo electrónico</li>
+                            <li>Llamadas telefónicas</li>
+                        </ul>
+
+                        <p style="margin-bottom: 30px; color: var(--text-light); line-height: 1.6;">
+                            Estos datos pueden incluir nombre, número telefónico, correo electrónico y cualquier información relacionada con la solicitud de servicios.
+                        </p>
+
+                        <h3 style="margin-bottom: 20px;">Uso de la información</h3>
+                        <p style="margin-bottom: 30px; color: var(--text-light); line-height: 1.6;">
+                            La información que el usuario proporciona de manera voluntaria se utiliza únicamente para:
+                        </p>
+
+                        <ul style="margin-bottom: 30px; color: var(--text-light); line-height: 1.6;">
+                            <li>Brindar información sobre nuestros servicios</li>
+                            <li>Cotizaciones</li>
+                            <li>Atención a clientes</li>
+                            <li>Seguimiento de proyectos</li>
+                        </ul>
+
+                        <p style="margin-bottom: 30px; color: var(--text-light); line-height: 1.6;">
+                            En Xxpectra Studio no vendemos, compartimos ni transferimos datos personales a terceros.
+                        </p>
+
+                        <h3 style="margin-bottom: 20px;">Protección de datos</h3>
+                        <p style="margin-bottom: 30px; color: var(--text-light); line-height: 1.6;">
+                            Nos comprometemos a utilizar medidas razonables para proteger la información proporcionada y evitar el acceso no autorizado.
+                        </p>
+
+                        <h3 style="margin-bottom: 20px;">Derechos del usuario</h3>
+                        <p style="margin-bottom: 30px; color: var(--text-light); line-height: 1.6;">
+                            El usuario puede solicitar en cualquier momento la modificación o eliminación de su información personal enviando un correo a:
+                        </p>
+
+                        <p style="margin-bottom: 30px; color: var(--text-light); line-height: 1.6;">
+                            <strong>xxpectra.studio@gmail.com</strong>
+                        </p>
+
+                        <h3 style="margin-bottom: 20px;">Cambios al aviso de privacidad</h3>
+                        <p style="margin-bottom: 30px; color: var(--text-light); line-height: 1.6;">
+                            Este Aviso de Privacidad puede actualizarse en cualquier momento. Cualquier cambio será publicado en este mismo sitio web.
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+    </main>
+
+    <!-- FLOATING WHATSAPP -->
+    <a href="https://wa.me/5523145831" target="_blank" class="whatsapp-float">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- WAVE EFFECT ABOVE FOOTER -->
+    <section class="waves">
+        <div class='air air1'></div>
+        <div class='air air2'></div>
+        <div class='air air3'></div>
+        <div class='air air4'></div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="text-left-desktop">
+                    <span class="footer-logo">XXPECTRA STUDIO</span>
+                    <p style="font-size: 0.85rem; color: #777;">Capturando la esencia visual con elegancia y precisión.</p>
+                    <div class="footer-socials">
+                        <a href="https://www.facebook.com/Xxpectra.Studio" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/xxpectra_studio/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://wa.me/5523145831" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i></a>
+                        <a href="https://www.tiktok.com/@xxpectrastudio" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-tiktok"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 style="margin-bottom: 20px; font-weight: 500; font-family: var(--font-titles); letter-spacing: 1px;">Enlaces Rápidos</h4>
+                    <div class="footer-links">
+                        <a href="#" onclick="showPage('home')">Inicio</a>
+                        <a href="#" onclick="showPage('services')">Servicios</a>
+                        <a href="#" onclick="showPage('portfolio')">Portafolio</a>
+                        <a href="#" onclick="showPage('contact')">Contacto</a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 style="margin-bottom: 20px; font-weight: 500; font-family: var(--font-titles); letter-spacing: 1px;">Legal</h4>
+                    <div class="footer-links">
+                        <a href="#" onclick="showPage('terms')">Términos y Condiciones</a>
+                        <a href="#" onclick="showPage('privacy')">Política de Privacidad</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2026 Xxpectra Studio. Todos los derechos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
