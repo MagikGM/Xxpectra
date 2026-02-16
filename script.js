@@ -106,45 +106,45 @@ document.addEventListener('DOMContentLoaded', () => {
 const serviceData = {
     'sociales': {
         title: "Eventos Sociales",
-        desc: "Capturamos la narrativa de tu día especial con un enfoque documental y artístico, asegurando que cada emoción quede inmortalizada.",
-        list: ["Cobertura completa (8-10 hrs)", "Photobook Premium 30x30cm", "USB Box de madera grabada", "Galería online privada", "Trailer cinematográfico (3-5 min)"],
-        img: "https://images.unsplash.com/photo-1627915594191-248db7b3334e?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
-        video: "https://player.vimeo.com/external/371836779.sd.mp4?s=d7e79326e6761665a8820f4c3305417431e5050d&profile_id=164&oauth2_token_id=57447761"
+        desc: "Momentos irrepetibles convertidos en recuerdos atemporales, capturados con sensibilidad y detalle.",
+        list: ["Bodas", "XV años", "Bautizos", "Primera comunión", "Cumpleaños", "Aniversarios", "Entre otros..."],
+        img: "imagenes/modal-social.jpg",
+        video: ""
     },
     'corporativo': {
         title: "Corporativo",
-        desc: "Proyectamos la profesionalidad de tu marca mediante retratos ejecutivos, cobertura de eventos y videos institucionales.",
-        list: ["Sesión de Retrato Ejecutivo", "Cobertura de Evento Empresarial", "Entrega digital en alta resolución", "Cesión de derechos de uso comercial"],
-        img: "https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
-        video: "https://player.vimeo.com/external/370467553.sd.mp4?s=96e63f5b72d242589574447728471c265882410f&profile_id=164&oauth2_token_id=57447761"
+        desc: "Imagen profesional que comunica liderazgo, confianza y la esencia de tu empresa.",
+        list: ["Corporativos", "Conferencias", "Congresos", "Fotografía empresarial", "Entre otros..."],
+        img: "imagenes/",
+        video: ""
     },
     'marketing': {
         title: "Marketing",
-        desc: "Contenido diseñado para el algoritmo. Creamos piezas visuales dinámicas que detienen el scroll y generan conversión.",
-        list: ["Paquete de 10 Reels/TikToks", "Fotografía de Producto para web", "Formatos adaptados (9:16 y 4:5)", "Estrategia visual mensual"],
-        img: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
-        video: "https://player.vimeo.com/external/480277335.sd.mp4?s=34f8c983758373b984534808389659353982467d&profile_id=164&oauth2_token_id=57447761"
+        desc: "Contenido visual estratégico diseñado para atraer, conectar y generar impacto.",
+        list: ["Fotografía y video de productos", "Lanzamientos de marca", "Entre otros..."],
+        img: "imagenes/modal-marketing.jpg",
+        video: ""
     },
     'drone': {
         title: "Video con Drone",
-        desc: "Perspectivas aéreas que transforman tu narrativa. Tomas cinematográficas que elevan la calidad de tus proyectos.",
-        list: ["Video aéreo profesional 4K", "Edición cinematográfica avanzada", "Música y efectos visuales", "Permisos de vuelo incluidos", "Entrega en USB y digital"],
-        img: "https://images.unsplash.com/photo-1506947411487-a56738267384?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
-        video: "https://player.vimeo.com/external/369069562.sd.mp4?s=27d057181057e49755b796850c9569426f432742&profile_id=164&oauth2_token_id=57447761"
+        desc: "Perspectivas aéreas que elevan tu proyecto y muestran cada espacio desde un angulo extraordinario",
+        list: ["Eventos sociales", "Eventos masivos", "Festivales", "Eventos Deportivos", "Eventos Coorporativos", "Entre otros..."],
+        img: "",
+        video: ""
     },
     'cultural': {
         title: "Cultural y Deportivo",
-        desc: "La velocidad y la expresión artística requieren técnica precisa. Capturamos la acción en su punto máximo.",
-        list: ["Cobertura de competiciones", "Video resumen (Highlights)", "Ráfaga de fotos de acción", "Entrevistas cortas post-evento"],
-        img: "https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
-        video: "https://player.vimeo.com/external/392765655.sd.mp4?s=d0718d07019623087220556637b58793390886c9&profile_id=164&oauth2_token_id=57447761"
+        desc: "Energía, pasión y movimiento capturados en su maxima expresión.",
+        list: ["Conciertos", "Festivales", "Presentaciones Artisticas", "Obras de teatro", "Actividades Municipales", "Expocisiones", "Competencias", "Carreras", "Entre otros..."],
+        img: "imagenes/modal-deportivo.jpg",
+        video: ""
     },
     'edicion': {
         title: "Post-producción",
         desc: "Donde ocurre la magia. Transformamos material crudo en piezas maestras mediante corrección de color y diseño sonoro.",
-        list: ["Edición no lineal", "Corrección de color (Color Grading)", "Diseño sonoro y mezcla", "Retoque fotográfico High-End"],
-        img: "https://images.unsplash.com/photo-1626785774573-4b799314346d?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80",
-        video: "https://player.vimeo.com/external/494236056.sd.mp4?s=83d6a945199464e837644268e0d5a42207901594&profile_id=164&oauth2_token_id=57447761"
+        list: ["Correcciones de color", "Retoque Natural", "Ajustes de luz y encuadre", "Musicalización", "Transiciones profesionales", "Entre otros..."],
+        img: "",
+        video: ""
     }
 };
 
@@ -154,10 +154,17 @@ const mDesc = document.getElementById('m-desc');
 const mList = document.getElementById('m-list');
 const mImg = document.getElementById('m-img');
 const mVideo = document.getElementById('m-video');
+const mDeliverablesTitle = document.querySelector('.deliverables-title');
 
 function openModal(serviceKey) {
     const data = serviceData[serviceKey];
     if (!data) return;
+
+    if (serviceKey === 'edicion') {
+        mDeliverablesTitle.textContent = "Servicios de Edición";
+    } else {
+        mDeliverablesTitle.textContent = "Tipos de Eventos";
+    }
 
     mTitle.textContent = data.title;
     mDesc.textContent = data.desc;
@@ -353,3 +360,36 @@ document.addEventListener('DOMContentLoaded', () => {
 window.addEventListener('load', () => {
     window.scrollTo(0, 0);
 });
+
+// --- LIGHTBOX LOGIC ---
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+
+// Al hacer clic en la imagen del modal de servicios
+if (mImg) {
+    mImg.addEventListener('click', function() {
+        // Solo abrir si hay una imagen cargada
+        if (this.getAttribute('src') && this.getAttribute('src') !== "") {
+            lightboxImg.src = this.src;
+            lightbox.classList.add('active');
+        }
+    });
+}
+
+// Al hacer clic en la imagen DENTRO del lightbox (Zoom)
+lightboxImg.addEventListener('click', function(e) {
+    e.stopPropagation(); // Evita que se cierre el lightbox
+    this.classList.toggle('zoomed');
+});
+
+function closeLightboxBtn() {
+    lightbox.classList.remove('active');
+    // Quitar zoom al cerrar para la próxima vez
+    setTimeout(() => lightboxImg.classList.remove('zoomed'), 300);
+}
+
+function closeLightbox(e) {
+    if (e.target === lightbox) {
+        closeLightboxBtn();
+    }
+}

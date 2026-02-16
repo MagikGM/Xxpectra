@@ -17,6 +17,22 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=drone_2">
 </head>
 <body>
+    <!-- BACKGROUND ANIMATION (FONDO DINÁMICO) -->
+    <div class="bg-animation">
+        <div class="shape shape-1 circle"></div>
+        <div class="shape shape-2 triangle"></div>
+        <div class="shape shape-3 square"></div>
+        <div class="shape shape-4 pentagon"></div>
+        <div class="shape shape-5 circle"></div>
+        <div class="shape shape-6 triangle"></div>
+        <div class="shape shape-7 square"></div>
+        <div class="shape shape-8 pentagon"></div>
+        <div class="shape shape-9 circle"></div>
+        <div class="shape shape-10 triangle"></div>
+        <div class="shape shape-11 square"></div>
+        <div class="shape shape-12 pentagon"></div>
+    </div>
+
     <!-- HEADER -->
     <header>
         <div class="header-content">
@@ -88,16 +104,16 @@
                     </div>
                     <div class="about-grid fade-in">
                         <div class="fade-in">
-                            <p style="margin-bottom: 30px; color: var(--text-light); text-align: center;">
+                            <p class="about-text">
                                 Somos un equipo de fotografía y video, apasionado por capturar momentos, historias y marcas con autenticidad y calidad.<br> Transformamos ideas en imágenes que comunican, conectan y perduran.
                             </p>
                         </div>
                         <div class="fade-in">
-                            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Equipo Xxpectra" style="border-radius: 4px;">
+                            <img src="imagenes/quienessomos.jpeg" alt="Equipo Xxpectra" style="border-radius: 4px; max-width: 750px; width: 100%;">
                         </div>
                     </div>
                 </div>
-                <!-- Testimonios -->
+                <!-- Testimonios 
                 <div class="section testimonials fade-in">
                     <div class="container">
                         <div class="testimonial-card fade-in">
@@ -106,7 +122,7 @@
                             <p class="client-name">— Sofia R., Directora Creativa de LUNA</p>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </section>
         </div>
 
@@ -125,19 +141,16 @@
                         <div class="service-card">
                             <div class="service-icon"><i class="fa-solid fa-glass-cheers"></i></div>
                             <h3>Eventos Sociales</h3>
-                            <p>Cobertura cinematográfica de momentos únicos: bodas, XV años y celebraciones especiales.</p>
                             <button class="service-btn" onclick="openModal('sociales')">Mas detalles</button>
                         </div>
                         <div class="service-card">
                             <div class="service-icon"><i class="fa-solid fa-building"></i></div>
                             <h3>Corporativo</h3>
-                            <p>Imagen profesional para tu empresa, desde retratos ejecutivos hasta eventos y convenciones.</p>
                             <button class="service-btn" onclick="openModal('corporativo')">Mas detalles</button>
                         </div>
                         <div class="service-card">
                             <div class="service-icon"><i class="fa-solid fa-bullhorn"></i></div>
                             <h3>Marketing</h3>
-                            <p>Creación de contenido estratégico diseñado para potenciar tu marca y conectar con tu audiencia.</p>
                             <button class="service-btn" onclick="openModal('marketing')">Mas detalles</button>
                         </div>
                         <div class="service-card">
@@ -145,19 +158,16 @@
                                 <span class="material-symbols-outlined">drone_2</span>
                             </div>
                             <h3>Video con Drone</h3>
-                            <p>Tomas aéreas espectaculares que aportan una perspectiva cinematográfica y épica a tu proyecto.</p>
                             <button class="service-btn" onclick="openModal('drone')">Mas detalles</button>
                         </div>
                         <div class="service-card">
                             <div class="service-icon"><i class="fa-solid fa-masks-theater"></i></div>
                             <h3>Cultural y Deportivo</h3>
-                            <p>Documentación especializada de eventos artísticos, festivales y competencias de alto rendimiento.</p>
                             <button class="service-btn" onclick="openModal('cultural')">Mas detalles</button>
                         </div>
                         <div class="service-card">
                             <div class="service-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
                             <h3>Edición de Foto y Video</h3>
-                            <p>Post-producción profesional, retoque avanzado y colorización para un acabado impecable.</p>
                             <button class="service-btn" onclick="openModal('edicion')">Mas detalles</button>
                         </div>
                     </div>
@@ -178,7 +188,7 @@
                         </div>
                         <!-- CAJA CON FONDO GRIS Y LINEA LATERAL -->
                         <div class="deliverables-box">
-                            <span class="deliverables-title">¿Qué Incluye?</span>
+                            <span class="deliverables-title">Tipos de Eventos</span>
                             <ul class="deliverables-list" id="m-list">
                                 <!-- Lista generada dinámicamente -->
                             </ul>
@@ -202,6 +212,12 @@
                     </div>
                 </div>
             </div>
+        </div>
+
+        <!-- LIGHTBOX (VISOR DE IMAGENES) -->
+        <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+            <span class="lightbox-close" onclick="closeLightboxBtn()">&times;</span>
+            <img class="lightbox-img" id="lightbox-img" src="">
         </div>
 
         <!-- PAGINA: PORTAFOLIO (portafolio.html) -->
