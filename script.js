@@ -127,7 +127,7 @@ const serviceData = {
     },
     'drone': {
         title: "Video con Drone",
-        desc: "Perspectivas aéreas que elevan tu proyecto y muestran cada espacio desde un angulo extraordinario",
+        desc: "Perspectivas aéreas que elevan tu proyecto y muestran cada espacio desde un angulo extraordinario.",
         list: ["Eventos sociales", "Eventos masivos", "Festivales", "Eventos Deportivos", "Eventos Coorporativos", "Entre otros..."],
         img: "",
         video: ""
@@ -356,9 +356,121 @@ document.addEventListener('DOMContentLoaded', () => {
     initScrollAnimations();
 });
 
-// Ensure page starts from top on reload
-window.addEventListener('load', () => {
-    window.scrollTo(0, 0);
+// --- PARTICLES JS CONFIGURATION ---
+// Configuración adaptada del efecto solicitado (Hexágonos cayendo)
+document.addEventListener('DOMContentLoaded', () => {
+    if (document.getElementById('particles-js') && window.particlesJS) {
+        particlesJS("particles-js", {
+            "particles": {
+                "number": {
+                    "value": 30,
+                    "density": {
+                        "enable": false,
+                        "value_area": 1763.753266952075
+                    }
+                },
+                "color": {
+                    "value": "#aaaaaa"
+                },
+                "shape": {
+                    "type": "polygon",
+                    "stroke": {
+                        "width": 0,
+                        "color": "#000"
+                    },
+                    "polygon": {
+                        "nb_sides": 6
+                    },
+                    "image": {
+                        "src": "img/github.svg",
+                        "width": 100,
+                        "height": 100
+                    }
+                },
+                "opacity": {
+                    "value": 0.14993805191013182,
+                    "random": true,
+                    "anim": {
+                        "enable": false,
+                        "speed": 1.0557003759917487,
+                        "opacity_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "size": {
+                    "value": 120.2559045649142,
+                    "random": true,
+                    "anim": {
+                        "enable": true,
+                        "speed": 10,
+                        "size_min": 40,
+                        "sync": false
+                    }
+                },
+                "line_linked": {
+                    "enable": false,
+                    "distance": 200,
+                    "color": "#ffffff",
+                    "opacity": 1,
+                    "width": 2
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 3,
+                    "direction": "none",
+                    "random": true,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false,
+                    "attract": {
+                        "enable": false,
+                        "rotateX": 600,
+                        "rotateY": 1200
+                    }
+                }
+            },
+            "interactivity": {
+                "detect_on": "window",
+                "events": {
+                    "onhover": {
+                        "enable": false,
+                        "mode": "repulse"
+                    },
+                    "onclick": {
+                        "enable": false,
+                        "mode": "bubble"
+                    },
+                    "resize": true
+                },
+                "modes": {
+                    "grab": {
+                        "distance": 400,
+                        "line_linked": {
+                            "opacity": 1
+                        }
+                    },
+                    "bubble": {
+                        "distance": 400,
+                        "size": 40,
+                        "duration": 2,
+                        "opacity": 8,
+                        "speed": 3
+                    },
+                    "repulse": {
+                        "distance": 200,
+                        "duration": 0.4
+                    },
+                    "push": {
+                        "particles_nb": 4
+                    },
+                    "remove": {
+                        "particles_nb": 2
+                    }
+                }
+            },
+            "retina_detect": true
+        });
+    }
 });
 
 // --- LIGHTBOX LOGIC ---
@@ -376,16 +488,8 @@ if (mImg) {
     });
 }
 
-// Al hacer clic en la imagen DENTRO del lightbox (Zoom)
-lightboxImg.addEventListener('click', function(e) {
-    e.stopPropagation(); // Evita que se cierre el lightbox
-    this.classList.toggle('zoomed');
-});
-
 function closeLightboxBtn() {
     lightbox.classList.remove('active');
-    // Quitar zoom al cerrar para la próxima vez
-    setTimeout(() => lightboxImg.classList.remove('zoomed'), 300);
 }
 
 function closeLightbox(e) {

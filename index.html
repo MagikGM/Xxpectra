@@ -17,21 +17,9 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=drone_2">
 </head>
 <body>
-    <!-- BACKGROUND ANIMATION (FONDO DINÁMICO) -->
-    <div class="bg-animation">
-        <div class="shape shape-1 circle"></div>
-        <div class="shape shape-2 triangle"></div>
-        <div class="shape shape-3 square"></div>
-        <div class="shape shape-4 pentagon"></div>
-        <div class="shape shape-5 circle"></div>
-        <div class="shape shape-6 triangle"></div>
-        <div class="shape shape-7 square"></div>
-        <div class="shape shape-8 pentagon"></div>
-        <div class="shape shape-9 circle"></div>
-        <div class="shape shape-10 triangle"></div>
-        <div class="shape shape-11 square"></div>
-        <div class="shape shape-12 pentagon"></div>
-    </div>
+    
+    <!-- BACKGROUND ANIMATION -->
+    <div id="particles-js"></div>
 
     <!-- HEADER -->
     <header>
@@ -83,11 +71,8 @@
         <div id="home" class="page-view active">
             <section class="hero">
                 <div class="hero-bg-animate"></div>
-                
-                <!-- 2. Capa Oscura (Overlay) -->
                 <div class="hero-overlay"></div>
-                
-                <!-- 3. Contenido de Texto -->
+
                 <div class="container">
                     <h1>Capturamos la Esencia</h1>
                     <h2>VIDEO Y FOTOGRAFÍA PROFESIONAL</h2>
@@ -96,7 +81,7 @@
             </section>
 
             <!-- Quiénes Somos -->
-            <section class="section bg-secondary fade-in">
+            <section class="section fade-in">
                 <div class="container">
                     <div class="text-center fade-in" style="margin-bottom: 30px;">
                         <h2 class="fade-in" style="margin-bottom: 15px; font-size: clamp(2rem, 9vw, 3rem); white-space: nowrap;">XXPECTRA STUDIO</h2>
@@ -113,7 +98,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- Testimonios 
+                <!-- Testimonios -->
                 <div class="section testimonials fade-in">
                     <div class="container">
                         <div class="testimonial-card fade-in">
@@ -122,7 +107,7 @@
                             <p class="client-name">— Sofia R., Directora Creativa de LUNA</p>
                         </div>
                     </div>
-                </div> -->
+                </div> 
             </section>
         </div>
 
@@ -230,7 +215,6 @@
                     </div>
 
                     <div class="portfolio-grid fade-in">
-                        <!-- Placeholder images used -->
                         <div class="portfolio-item fade-in">
                             <img src="" alt="Fiesta familiar">
                             <div class="portfolio-overlay">
@@ -471,7 +455,7 @@
     <footer>
         <div class="container">
             <div class="footer-content">
-                <div class="text-left-desktop">
+                <div>
                     <span class="footer-logo">XXPECTRA STUDIO</span>
                     <p style="font-size: 0.85rem; color: #777;">Capturando la esencia visual con elegancia y precisión.</p>
                     <div class="footer-socials">
@@ -507,6 +491,8 @@
         </div>
     </footer>
 
+    <!-- Particles.js Library -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
