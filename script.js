@@ -109,7 +109,7 @@ const serviceData = {
         desc: "Momentos irrepetibles convertidos en recuerdos atemporales, capturados con sensibilidad y detalle.",
         list: ["Bodas", "XV años", "Bautizos", "Primera comunión", "Cumpleaños", "Aniversarios", "Entre otros..."],
         img: "imagenes/modal-social.jpg",
-        video: ""
+        video: "videos/modal-social.mp4"
     },
     'corporativo': {
         title: "Corporativo",
