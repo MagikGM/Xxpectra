@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Xxpectra Studio | Fotografía y Video Profesional</title>
-    <link rel="icon" type="imagen/png" href="imagenes/xp-icon.png">
+    <link rel="icon" type="imagen/png" href="media/recursos/xp-icon.png">
     <link rel="stylesheet" href="style.css">
     <!-- Google Fonts: Cargando DM Serif Text y Merriweather Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -32,7 +32,7 @@
             <!-- Logotipo Centrado -->
             <div class="logo-container">
                 <a href="#" onclick="showPage('home')">
-                    <img src="imagenes/logo-xxpectra.png" alt="Xxpectra Studio" class="logo-img">
+                    <img src="media/recursos/logo-xxpectra.png" alt="Xxpectra Studio" class="logo-img">
                 </a>
             </div>
             
@@ -94,7 +94,7 @@
                             </p>
                         </div>
                         <div class="fade-in">
-                            <img src="imagenes/quienessomos.jpeg" alt="Equipo Xxpectra" style="border-radius: 4px; max-width: 750px; width: 100%;">
+                            <img src="media/inicio/quienessomos.jpeg" alt="Equipo Xxpectra" style="border-radius: 4px; max-width: 750px; width: 100%;">
                         </div>
                     </div>
                 </div>
@@ -142,7 +142,7 @@
                             <div class="service-icon">
                                 <span class="material-symbols-outlined">drone_2</span>
                             </div>
-                            <h3>Video con Drone</h3>
+                            <h3>Video con Dron</h3>
                             <button class="service-btn" onclick="openModal('drone')">Mas detalles</button>
                         </div>
                         <div class="service-card">
@@ -185,8 +185,8 @@
                     </div>
                     <!-- COLUMNA DERECHA: Imagen + Video -->
                     <div class="modal-right">
-                        <div class="media-wrapper">
-                            <img src="" alt="Entregable" class="deliverables-img" id="m-img">
+                        <div class="media-wrapper" id="m-carousel-container">
+                            <!-- Las imágenes se inyectan aquí vía JS -->
                         </div>
                         <div class="modal-video-container">
                             <video class="modal-video" id="m-video" autoplay loop muted playsinline>

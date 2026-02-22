@@ -69,6 +69,7 @@ function showPage(pageId) {
 
     // 7. Guardar la página actual en localStorage
     localStorage.setItem('currentPage', pageId);
+    localStorage.setItem('lastVisitTime', Date.now());
 }
 
 // Inicialización: Asegurar que Home es visible al cargar
@@ -78,11 +79,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Verificar si hay una página guardada en localStorage
     const savedPage = localStorage.getItem('currentPage');
+    const lastVisitTime = localStorage.getItem('lastVisitTime');
+    const sessionTimeout = 20 * 60 * 1000; // 20 minutos de expiración (en milisegundos)
 
-    if (savedPage && document.getElementById(savedPage)) {
+    if (savedPage && lastVisitTime && (Date.now() - lastVisitTime < sessionTimeout) && document.getElementById(savedPage)) {
         // Mostrar la página guardada
         showPage(savedPage);
     } else {
+        // Si pasó mucho tiempo, limpiar memoria para empezar de cero
+        localStorage.removeItem('currentPage');
+        localStorage.removeItem('lastVisitTime');
+
         // El HTML ya tiene la clase active en Home, pero esto es un seguro
         if (!document.querySelector('.page-view.active')) {
             showPage('home');
@@ -108,42 +115,42 @@ const serviceData = {
         title: "Eventos Sociales",
         desc: "Momentos irrepetibles convertidos en recuerdos atemporales, capturados con sensibilidad y detalle.",
         list: ["Bodas", "XV años", "Bautizos", "Primera comunión", "Cumpleaños", "Aniversarios", "Entre otros..."],
-        img: "imagenes/modal-social.jpg",
-        video: "videos/modal-social.mp4"
+        images: ["media/servicios/sociales/s1.jpg"], // Agrega más fotos aquí separadas por coma
+        video: "media/servicios/sociales/sociales.mp4"
     },
     'corporativo': {
         title: "Corporativo",
         desc: "Imagen profesional que comunica liderazgo, confianza y la esencia de tu empresa.",
         list: ["Corporativos", "Conferencias", "Congresos", "Fotografía empresarial", "Entre otros..."],
-        img: "imagenes/",
+        images: ["media/servicios/corporativo/c1.jpg", "media/servicios/corporativo/c2.jpg", "media/servicios/corporativo/c3.jpg", "media/servicios/corporativo/c4.jpg"], 
         video: ""
     },
     'marketing': {
         title: "Marketing",
         desc: "Contenido visual estratégico diseñado para atraer, conectar y generar impacto.",
         list: ["Fotografía y video de productos", "Lanzamientos de marca", "Entre otros..."],
-        img: "imagenes/modal-marketing.jpg",
+        images: ["media/servicios/marketing/m1.jpg", "media/servicios/marketing/m2.jpg", "media/servicios/marketing/m3.jpg", "media/servicios/marketing/m4.jpg"],
         video: ""
     },
     'drone': {
-        title: "Video con Drone",
+        title: "Video con Dron",
         desc: "Perspectivas aéreas que elevan tu proyecto y muestran cada espacio desde un angulo extraordinario.",
         list: ["Eventos sociales", "Eventos masivos", "Festivales", "Eventos Deportivos", "Eventos Coorporativos", "Entre otros..."],
-        img: "",
+        images: [""],
         video: ""
     },
     'cultural': {
         title: "Cultural y Deportivo",
         desc: "Energía, pasión y movimiento capturados en su maxima expresión.",
         list: ["Conciertos", "Festivales", "Presentaciones Artisticas", "Obras de teatro", "Actividades Municipales", "Expocisiones", "Competencias", "Carreras", "Entre otros..."],
-        img: "imagenes/modal-deportivo.jpg",
+        images: ["media/servicios/cultural/c1.jpg", "media/servicios/cultural/c2.jpg", "media/servicios/cultural/c3.jpg", "media/servicios/cultural/c4.jpg"],
         video: ""
     },
     'edicion': {
         title: "Post-producción",
         desc: "Donde ocurre la magia. Transformamos material crudo en piezas maestras mediante corrección de color y diseño sonoro.",
         list: ["Correcciones de color", "Retoque Natural", "Ajustes de luz y encuadre", "Musicalización", "Transiciones profesionales", "Entre otros..."],
-        img: "",
+        images: [""],
         video: ""
     }
 };
@@ -152,9 +159,10 @@ const modal = document.getElementById('serviceModal');
 const mTitle = document.getElementById('m-title');
 const mDesc = document.getElementById('m-desc');
 const mList = document.getElementById('m-list');
-const mImg = document.getElementById('m-img');
+const mCarouselContainer = document.getElementById('m-carousel-container');
 const mVideo = document.getElementById('m-video');
 const mDeliverablesTitle = document.querySelector('.deliverables-title');
+let carouselInterval; // Variable para controlar el tiempo
 
 function openModal(serviceKey) {
     const data = serviceData[serviceKey];
@@ -168,7 +176,36 @@ function openModal(serviceKey) {
 
     mTitle.textContent = data.title;
     mDesc.textContent = data.desc;
-    mImg.src = data.img;
+    
+    // --- LÓGICA DEL CARRUSEL ---
+    // 1. Limpiar contenedor
+    mCarouselContainer.innerHTML = '';
+    
+    // 2. Insertar imágenes
+    if (data.images && data.images.length > 0) {
+        data.images.forEach((imgSrc, index) => {
+            if(imgSrc === "") return; // Saltar si está vacío
+            const img = document.createElement('img');
+            img.src = imgSrc;
+            img.className = index === 0 ? 'carousel-img active' : 'carousel-img';
+            img.alt = data.title;
+            
+            // Añadir evento click para Lightbox (reemplaza la lógica anterior)
+            img.addEventListener('click', function() {
+                lightboxImg.src = this.src;
+                lightbox.classList.add('active');
+            });
+
+            mCarouselContainer.appendChild(img);
+        });
+
+        // 3. Iniciar intervalo si hay más de una imagen
+        if (data.images.length > 1) {
+            startCarousel();
+        }
+    } else {
+        // Opcional: Poner una imagen placeholder si no hay imágenes
+    }
 
     mList.innerHTML = '';
     data.list.forEach(item => {
@@ -188,9 +225,26 @@ function openModal(serviceKey) {
     }
 }
 
+function startCarousel() {
+    // Limpiar intervalo previo por seguridad
+    if (carouselInterval) clearInterval(carouselInterval);
+
+    carouselInterval = setInterval(() => {
+        const images = document.querySelectorAll('.carousel-img');
+        if (images.length < 2) return;
+
+        const activeIndex = Array.from(images).findIndex(img => img.classList.contains('active'));
+        const nextIndex = (activeIndex + 1) % images.length;
+
+        images[activeIndex].classList.remove('active');
+        images[nextIndex].classList.add('active');
+    }, 3000); // 3 segundos
+}
+
 function closeModalBtn() {
     modal.classList.remove('active');
     document.body.style.overflow = 'auto';
+    if (carouselInterval) clearInterval(carouselInterval); // Detener carrusel
     setTimeout(() => {
         mVideo.pause();
         mVideo.src = "";
@@ -476,17 +530,6 @@ document.addEventListener('DOMContentLoaded', () => {
 // --- LIGHTBOX LOGIC ---
 const lightbox = document.getElementById('lightbox');
 const lightboxImg = document.getElementById('lightbox-img');
-
-// Al hacer clic en la imagen del modal de servicios
-if (mImg) {
-    mImg.addEventListener('click', function() {
-        // Solo abrir si hay una imagen cargada
-        if (this.getAttribute('src') && this.getAttribute('src') !== "") {
-            lightboxImg.src = this.src;
-            lightbox.classList.add('active');
-        }
-    });
-}
 
 function closeLightboxBtn() {
     lightbox.classList.remove('active');

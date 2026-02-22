@@ -374,7 +374,7 @@ header {
     width: 100%;
     height: 120%;
     /* Más alto que el contenedor para permitir movimiento */
-    background-image: url('imagenes/fondo-inicio.png');
+    background-image: url('media/inicio/fondo-inicio.png');
     background-size: cover;
     background-position: center;
     z-index: 1;
@@ -385,7 +385,7 @@ header {
 /* Imagen vertical para móviles */
 @media (max-width: 768px) {
     .hero-bg-animate {
-        background-image: url('imagenes/fondo-inicio-movil.png');
+        background-image: url('media/inicio/fondo-inicio-movil.png');
     }
 }
 
@@ -536,7 +536,7 @@ header {
     opacity: 0;
     visibility: hidden;
     transition: var(--transition);
-    padding: 20px;
+    padding: 10px;
 }
 
 .modal-backdrop.active {
@@ -547,7 +547,7 @@ header {
 .modal-content {
     background: var(--white);
     width: 100%;
-    max-width: 950px;
+    max-width: 1200px;
     max-height: 90vh;
     overflow-y: auto;
     border-radius: 12px;
@@ -590,7 +590,7 @@ header {
 
 /* Grid layout del modal */
 .modal-body-grid {
-    padding: 40px;
+    padding: 20px;
     display: flex;
     flex-direction: column;
     gap: 30px;
@@ -599,9 +599,14 @@ header {
 @media (min-width: 850px) {
     .modal-body-grid {
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 0.8fr 1.2fr;
         gap: 50px;
         align-items: start;
+        padding: 50px;
+    }
+
+    .modal-right {
+        align-self: center;
     }
 }
 
@@ -626,6 +631,10 @@ header {
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+    }
+
+    .modal-left {
+        padding: 20px 20px 0 20px;
     }
 }
 
@@ -711,15 +720,26 @@ header {
     border-radius: 12px;
     overflow: hidden;
     background: #eee;
+    position: relative;
+    aspect-ratio: 16/9; /* Mantiene la forma rectangular */
 }
 
-.deliverables-img {
+.carousel-img {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: auto;
-    aspect-ratio: 16/9;
+    height: 100%;
     object-fit: cover;
-    display: block;
+    opacity: 0;
+    transition: opacity 1s ease-in-out; /* Transición suave */
     cursor: zoom-in;
+    z-index: 1;
+}
+
+.carousel-img.active {
+    opacity: 1;
+    z-index: 2;
 }
 
 .modal-video-container {
