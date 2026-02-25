@@ -24,20 +24,36 @@
     <!-- HEADER -->
     <header>
         <div class="header-content">
-            <!-- Icono Hamburguesa (Izquierda) -->
-            <button class="hamburger" id="menuToggle">
-                <i class="fa-solid fa-bars"></i>
-            </button>
-            
-            <!-- Logotipo Centrado -->
+            <!-- Logotipo (Izquierda en PC, Centro en Móvil) -->
             <div class="logo-container">
                 <a href="#" onclick="showPage('home')">
                     <img src="media/recursos/logo-xxpectra.png" alt="Xxpectra Studio" class="logo-img">
                 </a>
             </div>
+
+            <!-- Navegación Desktop (Derecha) -->
+            <nav class="desktop-nav">
+                <a href="#" onclick="showPage('home')" class="nav-link active">Inicio</a>
+                <a href="#" onclick="showPage('services')" class="nav-link">Servicios</a>
+                <a href="#" onclick="showPage('portfolio')" class="nav-link">Portafolio</a>
+                <a href="#" onclick="showPage('contact')" class="nav-link">Contacto</a>
+                
+                <!-- Botón Redes con Dropdown -->
+                <div class="social-menu-item">
+                    <a href="javascript:void(0)" class="nav-link">Redes</a>
+                    <div class="social-dropdown">
+                        <a href="https://www.facebook.com/Xxpectra.Studio" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/xxpectra_studio/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://wa.me/5523145831" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+                        <a href="https://www.tiktok.com/@xxpectrastudio" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+                    </div>
+                </div>
+            </nav>
             
-            <!-- Espacio vacío derecha para equilibrio -->
-            <div style="width: 24px;"></div> 
+            <!-- Icono Hamburguesa (Solo Móvil) -->
+            <button class="hamburger" id="menuToggle">
+                <i class="fa-solid fa-bars"></i>
+            </button>
         </div>
     </header>
 
@@ -94,7 +110,7 @@
                             </p>
                         </div>
                         <div class="fade-in">
-                            <img src="media/inicio/quienessomos.jpeg" alt="Equipo Xxpectra" style="border-radius: 4px; max-width: 750px; width: 100%;">
+                            <img src="media/inicio/quienessomos.webp" alt="Equipo Xxpectra" style="border-radius: 4px; max-width: 750px; width: 100%;">
                         </div>
                     </div>
                 </div>
@@ -190,7 +206,7 @@
                         </div>
                         <div class="modal-video-container">
                             <video class="modal-video" id="m-video" autoplay loop muted playsinline>
-                                <source src="" type="video/mp4">
+                                <source src="" type="video/webm">
                             </video>
                             <div class="video-label">Resultado Final</div>
                         </div>

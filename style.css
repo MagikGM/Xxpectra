@@ -173,21 +173,16 @@ header {
 }
 
 .header-content {
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
-    /* Izquierda, Centro, Derecha */
+    display: flex;
+    justify-content: space-between;
     align-items: center;
     width: 100%;
     padding: 0 5%;
+    position: relative; /* Necesario para centrar el logo en móvil */
 }
 
 .hamburger {
-    justify-self: start;
-    cursor: pointer;
-    font-size: 2rem;
-    color: var(--white);
-    background: none;
-    border: none;
+    display: none; /* Oculto por defecto en PC */
 }
 
 .logo-container {
@@ -206,6 +201,125 @@ header {
 
 .logo-container a {
     cursor: pointer;
+}
+
+/* --- DESKTOP NAVIGATION --- */
+.desktop-nav {
+    display: flex;
+    gap: 40px;
+}
+
+.desktop-nav a {
+    font-family: var(--font-titles); /* Misma fuente elegante del sidebar */
+    font-size: 1.1rem;
+    color: #ffffff; /* Un gris claro elegante, no blanco puro */
+    position: relative;
+    letter-spacing: 1px;
+    transition: var(--transition);
+}
+
+.desktop-nav a:hover,
+.desktop-nav a.active {
+    color: var(--accent); /* Color dorado al pasar el mouse */
+}
+
+/* Pequeña línea animada debajo de los links en PC */
+.desktop-nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: -5px;
+    left: 0;
+    background-color: var(--accent);
+    transition: width 0.3s ease;
+}
+
+.desktop-nav a:hover::after,
+.desktop-nav a.active::after {
+    width: 100%;
+}
+
+/* --- SOCIAL DROPDOWN (DESKTOP) --- */
+.social-menu-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.social-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(15px); /* Empieza un poco más abajo */
+    background-color: #1a1a1a;
+    padding: 15px 25px;
+    border-radius: 8px;
+    display: flex;
+    gap: 20px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    border: 1px solid #333;
+}
+
+.social-menu-item:hover .social-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(5px); /* Sube suavemente a su posición */
+}
+
+/* Estilos específicos para los iconos dentro del dropdown (para no heredar la línea de abajo) */
+.desktop-nav .social-dropdown a {
+    font-size: 1.3rem;
+    color: #ffffff;
+    width: auto;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 0;
+}
+
+.desktop-nav .social-dropdown a::after {
+    display: none; /* Quitamos la línea subrayada de los links normales */
+}
+
+.desktop-nav .social-dropdown a:hover {
+    color: var(--accent);
+    transform: translateY(-3px); /* Pequeño saltito al pasar el mouse */
+}
+
+/* --- MOBILE HEADER ADJUSTMENTS (Max 768px) --- */
+@media (max-width: 768px) {
+    .desktop-nav {
+        display: none; /* Ocultar menú de texto en móvil */
+    }
+
+    .hamburger {
+        display: block; /* Mostrar hamburguesa en móvil */
+        cursor: pointer;
+        font-size: 1.8rem;
+        color: var(--white);
+        background: none;
+        border: none;
+        z-index: 1001;
+    }
+
+    /* Centrar el logo absolutamente en móvil */
+    .logo-container {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    /* Alinear hamburguesa a la izquierda */
+    .header-content {
+        justify-content: flex-start; 
+    }
 }
 
 /* --- SIDEBAR NAVIGATION (Slide-out) --- */
@@ -374,7 +488,7 @@ header {
     width: 100%;
     height: 120%;
     /* Más alto que el contenedor para permitir movimiento */
-    background-image: url('media/inicio/fondo-inicio.png');
+    background-image: url('media/inicio/fondo-inicio.webp');
     background-size: cover;
     background-position: center;
     z-index: 1;
@@ -385,7 +499,7 @@ header {
 /* Imagen vertical para móviles */
 @media (max-width: 768px) {
     .hero-bg-animate {
-        background-image: url('media/inicio/fondo-inicio-movil.png');
+        background-image: url('media/inicio/fondo-inicio-movil.webp');
     }
 }
 

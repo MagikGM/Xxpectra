@@ -115,22 +115,22 @@ const serviceData = {
         title: "Eventos Sociales",
         desc: "Momentos irrepetibles convertidos en recuerdos atemporales, capturados con sensibilidad y detalle.",
         list: ["Bodas", "XV años", "Bautizos", "Primera comunión", "Cumpleaños", "Aniversarios", "Entre otros..."],
-        images: ["media/servicios/sociales/s1.jpg"], // Agrega más fotos aquí separadas por coma
-        video: "media/servicios/sociales/sociales.mp4"
+        images: ["media/servicios/sociales/s1.webp", "media/servicios/sociales/s2.webp", "media/servicios/sociales/s3.webp", "media/servicios/sociales/s4.webp", "media/servicios/sociales/s5.webp"], // Agrega más fotos aquí separadas por coma
+        video: "media/servicios/sociales/sociales.webm" // Asegúrate que este archivo exista y sea .webm
     },
     'corporativo': {
         title: "Corporativo",
         desc: "Imagen profesional que comunica liderazgo, confianza y la esencia de tu empresa.",
         list: ["Corporativos", "Conferencias", "Congresos", "Fotografía empresarial", "Entre otros..."],
-        images: ["media/servicios/corporativo/c1.jpg", "media/servicios/corporativo/c2.jpg", "media/servicios/corporativo/c3.jpg", "media/servicios/corporativo/c4.jpg"], 
+        images: ["media/servicios/corporativo/c1.webp", "media/servicios/corporativo/c2.webp", "media/servicios/corporativo/c3.webp", "media/servicios/corporativo/c4.webp"], 
         video: ""
     },
     'marketing': {
         title: "Marketing",
         desc: "Contenido visual estratégico diseñado para atraer, conectar y generar impacto.",
         list: ["Fotografía y video de productos", "Lanzamientos de marca", "Entre otros..."],
-        images: ["media/servicios/marketing/m1.jpg", "media/servicios/marketing/m2.jpg", "media/servicios/marketing/m3.jpg", "media/servicios/marketing/m4.jpg"],
-        video: ""
+        images: ["media/servicios/marketing/m1.webp", "media/servicios/marketing/m2.webp", "media/servicios/marketing/m3.webp", "media/servicios/marketing/m4.webp"],
+        video: "media/servicios/marketing/marketing.webm"
     },
     'drone': {
         title: "Video con Dron",
@@ -143,14 +143,14 @@ const serviceData = {
         title: "Cultural y Deportivo",
         desc: "Energía, pasión y movimiento capturados en su maxima expresión.",
         list: ["Conciertos", "Festivales", "Presentaciones Artisticas", "Obras de teatro", "Actividades Municipales", "Expocisiones", "Competencias", "Carreras", "Entre otros..."],
-        images: ["media/servicios/cultural/c1.jpg", "media/servicios/cultural/c2.jpg", "media/servicios/cultural/c3.jpg", "media/servicios/cultural/c4.jpg"],
+        images: ["media/servicios/cultural/c1.webp", "media/servicios/cultural/c2.webp", "media/servicios/cultural/c3.webp", "media/servicios/cultural/c4.webp"],
         video: ""
     },
     'edicion': {
         title: "Post-producción",
         desc: "Donde ocurre la magia. Transformamos material crudo en piezas maestras mediante corrección de color y diseño sonoro.",
         list: ["Correcciones de color", "Retoque Natural", "Ajustes de luz y encuadre", "Musicalización", "Transiciones profesionales", "Entre otros..."],
-        images: [""],
+        images: ["media/servicios/edicion/e1.webp"],
         video: ""
     }
 };
@@ -214,7 +214,15 @@ function openModal(serviceKey) {
         mList.appendChild(li);
     });
 
-    mVideo.src = data.video;
+    // Ocultar el contenedor de video si no hay video definido
+    if (data.video && data.video.trim() !== "") {
+        mVideo.src = data.video;
+        mVideo.parentElement.style.display = 'block';
+    } else {
+        mVideo.src = "";
+        mVideo.parentElement.style.display = 'none';
+    }
+
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';
 
