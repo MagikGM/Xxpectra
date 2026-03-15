@@ -39,6 +39,11 @@ function showPage(pageId) {
     const targetView = document.getElementById(pageId);
     if (targetView) {
         targetView.classList.add('active');
+        
+        // --- NUEVO: Mezclar portafolio aleatoriamente al entrar ---
+        if (pageId === 'portfolio') {
+            shufflePortfolio();
+        }
     }
 
     // 3. Actualizar clase activa en el menú
@@ -123,7 +128,7 @@ const serviceData = {
         desc: "Imagen profesional que comunica liderazgo, confianza y la esencia de tu empresa.",
         list: ["Corporativos", "Conferencias", "Congresos", "Fotografía empresarial", "Entre otros..."],
         images: ["media/servicios/corporativo/c1.webp", "media/servicios/corporativo/c2.webp", "media/servicios/corporativo/c3.webp", "media/servicios/corporativo/c4.webp"], 
-        video: ""
+        video: "media/servicios/corporativo/corporativo.webm"
     },
     'marketing': {
         title: "Marketing",
@@ -144,7 +149,7 @@ const serviceData = {
         desc: "Energía, pasión y movimiento capturados en su maxima expresión.",
         list: ["Conciertos", "Festivales", "Presentaciones Artisticas", "Obras de teatro", "Actividades Municipales", "Expocisiones", "Competencias", "Carreras", "Entre otros..."],
         images: ["media/servicios/cultural/c1.webp", "media/servicios/cultural/c2.webp", "media/servicios/cultural/c3.webp", "media/servicios/cultural/c4.webp"],
-        video: ""
+        video: "media/servicios/cultural/cultural.webm"
     },
     'edicion': {
         title: "Post-producción",
@@ -162,6 +167,7 @@ const mList = document.getElementById('m-list');
 const mCarouselContainer = document.getElementById('m-carousel-container');
 const mVideo = document.getElementById('m-video');
 const mDeliverablesTitle = document.querySelector('.deliverables-title');
+const mCtaBtn = document.querySelector('.modal-cta-btn');
 let carouselInterval; // Variable para controlar el tiempo
 
 function openModal(serviceKey) {
@@ -177,6 +183,10 @@ function openModal(serviceKey) {
     mTitle.textContent = data.title;
     mDesc.textContent = data.desc;
     
+    // Actualizar enlace de WhatsApp con mensaje personalizado
+    const message = `Hola, me interesa cotizar el servicio de ${data.title} por favor`;
+    mCtaBtn.href = `https://wa.me/5523145831?text=${encodeURIComponent(message)}`;
+
     // --- LÓGICA DEL CARRUSEL ---
     // 1. Limpiar contenedor
     mCarouselContainer.innerHTML = '';
@@ -361,6 +371,91 @@ function initMobileServiceHover() {
     });
 }
 
+// --- MOBILE SCROLL HOVER EFFECT FOR PORTFOLIO ---
+function initMobilePortfolioHover() {
+    const portfolioSection = document.getElementById('portfolio');
+    const portfolioItems = Array.from(document.querySelectorAll('.portfolio-item'));
+
+    if (!portfolioSection || portfolioItems.length === 0) return;
+
+    let currentActiveIndex = -1;
+    let lastSwitchTime = 0;
+    const minSwitchInterval = 300; // Minimum 300ms between switches
+
+    function handleScroll() {
+        if (window.innerWidth > 768) return; // Only apply on mobile
+
+        const now = Date.now();
+        if (now - lastSwitchTime < minSwitchInterval) return; // Prevent too frequent switches
+
+        const windowHeight = window.innerHeight;
+        const viewportCenter = windowHeight / 2;
+
+        // Calculate item positions relative to viewport center
+        const itemPositions = portfolioItems.map((item, index) => {
+            const rect = item.getBoundingClientRect();
+            const itemCenter = rect.top + rect.height / 2;
+            const distanceFromCenter = Math.abs(itemCenter - viewportCenter);
+            return { index, distanceFromCenter, item, itemCenter };
+        });
+
+        // Find the item closest to viewport center
+        itemPositions.sort((a, b) => a.distanceFromCenter - b.distanceFromCenter);
+        const closestItem = itemPositions[0];
+
+        // Only switch if the closest item is within activation zone
+        const activationThreshold = 150; // pixels from center
+        const hysteresisThreshold = 80; // pixels of hysteresis
+
+        let shouldSwitch = false;
+
+        if (currentActiveIndex === -1) {
+            shouldSwitch = closestItem.distanceFromCenter < activationThreshold;
+        } else {
+            const currentItem = itemPositions.find(p => p.index === currentActiveIndex);
+            if (currentItem) {
+                const distanceDiff = currentItem.distanceFromCenter - closestItem.distanceFromCenter;
+                shouldSwitch = distanceDiff > hysteresisThreshold && closestItem.distanceFromCenter < activationThreshold;
+            } else {
+                shouldSwitch = closestItem.distanceFromCenter < activationThreshold;
+            }
+        }
+
+        if (shouldSwitch) {
+            if (currentActiveIndex !== -1) {
+                portfolioItems[currentActiveIndex].classList.remove('active');
+            }
+            portfolioItems[closestItem.index].classList.add('active');
+            currentActiveIndex = closestItem.index;
+            lastSwitchTime = now;
+        }
+    }
+
+    let ticking = false;
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(() => {
+                handleScroll();
+                ticking = false;
+            });
+            ticking = true;
+        }
+    }
+
+    window.addEventListener('scroll', requestTick, { passive: true });
+    handleScroll();
+
+    window.addEventListener('resize', () => {
+        if (window.innerWidth <= 768) {
+            handleScroll();
+        } else {
+            portfolioItems.forEach(item => item.classList.remove('active'));
+            currentActiveIndex = -1;
+            lastSwitchTime = 0;
+        }
+    });
+}
+
 // --- SCROLL ANIMATIONS ---
 function initScrollAnimations() {
     const fadeInElements = document.querySelectorAll('.fade-in');
@@ -415,6 +510,7 @@ function initScrollAnimations() {
 // Initialize mobile service hover and scroll animations when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     initMobileServiceHover();
+    initMobilePortfolioHover();
     initScrollAnimations();
 });
 
@@ -547,4 +643,28 @@ function closeLightbox(e) {
     if (e.target === lightbox) {
         closeLightboxBtn();
     }
+}
+
+// --- ABRIR LIGHTBOX DESDE PORTAFOLIO ---
+function openPortfolioLightbox(element) {
+    const img = element.querySelector('img');
+    if (img && img.src && img.src !== window.location.href) { // Evita abrir imágenes vacías
+        lightboxImg.src = img.src;
+        lightbox.classList.add('active');
+    }
+}
+
+// --- FUNCIÓN PARA MEZCLAR EL PORTAFOLIO ALEATORIAMENTE ---
+function shufflePortfolio() {
+    const grid = document.querySelector('.portfolio-grid');
+    if (!grid) return;
+
+    const items = Array.from(grid.children);
+    for (let i = items.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [items[i], items[j]] = [items[j], items[i]]; // Intercambiar posiciones en el array
+    }
+
+    // Re-insertar los elementos en el DOM con el nuevo orden
+    items.forEach(item => grid.appendChild(item));
 }
