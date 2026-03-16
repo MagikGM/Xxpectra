@@ -61,18 +61,7 @@ function showPage(pageId) {
     // 5. Scroll al inicio inmediatamente
     window.scrollTo(0, 0);
 
-    // 6. Trigger scroll animations immediately for the new page
-    setTimeout(() => {
-        const fadeInElements = document.querySelectorAll('.fade-in');
-        fadeInElements.forEach(element => {
-            const rect = element.getBoundingClientRect();
-            if (rect.top < window.innerHeight && rect.bottom > 0 && !element.classList.contains('visible')) {
-                element.classList.add('visible');
-            }
-        });
-    }, 10); // Small delay to ensure DOM is updated
-
-    // 7. Guardar la página actual en localStorage
+    // 6. Guardar la página actual en localStorage
     localStorage.setItem('currentPage', pageId);
     localStorage.setItem('lastVisitTime', Date.now());
 }
@@ -100,17 +89,6 @@ document.addEventListener('DOMContentLoaded', () => {
             showPage('home');
         }
     }
-
-    // Trigger scroll animations immediately after page load
-    setTimeout(() => {
-        const fadeInElements = document.querySelectorAll('.fade-in');
-        fadeInElements.forEach(element => {
-            const rect = element.getBoundingClientRect();
-            if (rect.top < window.innerHeight && rect.bottom > 0 && !element.classList.contains('visible')) {
-                element.classList.add('visible');
-            }
-        });
-    }, 50); // Small delay to ensure everything is loaded
 });
 
 
@@ -460,51 +438,24 @@ function initMobilePortfolioHover() {
 function initScrollAnimations() {
     const fadeInElements = document.querySelectorAll('.fade-in');
 
-    function checkScroll() {
-        const windowHeight = window.innerHeight;
-        const scrollY = window.scrollY;
-
-        // Handle fade-in elements (once revealed, stays visible)
-        fadeInElements.forEach(element => {
-            const rect = element.getBoundingClientRect();
-            const elementTop = rect.top + scrollY;
-            const elementBottom = rect.bottom + scrollY;
-
-            // Element is in viewport (with some offset for smooth animation)
-            // Only add 'visible' if not already visible (once revealed, stays revealed)
-            if (elementTop < scrollY + windowHeight - 100 && elementBottom > scrollY + 100 && !element.classList.contains('visible')) {
-                element.classList.add('visible');
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target); // Dejar de observar una vez que es visible
             }
         });
-    }
-
-    // Throttle scroll events for better performance
-    let scrollTimeout;
-    function throttledScroll() {
-        if (!scrollTimeout) {
-            scrollTimeout = setTimeout(() => {
-                checkScroll();
-                scrollTimeout = null;
-            }, 16); // ~60fps
-        }
-    }
-
-    // Add scroll listener with passive option for better performance
-    window.addEventListener('scroll', throttledScroll, { passive: true });
-
-    // Initial check
-    checkScroll();
-
-    // Reveal elements that are already in viewport on load
-    fadeInElements.forEach(element => {
-        const rect = element.getBoundingClientRect();
-        if (rect.top < window.innerHeight && rect.bottom > 0) {
-            element.classList.add('visible');
-        }
+    }, {
+        root: null,
+        rootMargin: '0px 0px -50px 0px', // Revelar suavemente un poco antes
+        threshold: 0.1
     });
 
-    // Re-check on resize
-    window.addEventListener('resize', checkScroll);
+    fadeInElements.forEach(element => {
+        if (!element.classList.contains('visible')) {
+            observer.observe(element);
+        }
+    });
 }
 
 // Initialize mobile service hover and scroll animations when DOM is loaded
